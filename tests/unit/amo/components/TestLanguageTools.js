@@ -25,6 +25,11 @@ import LoadingText from 'ui/components/LoadingText';
 describe(__filename, () => {
   const addons = [
     createFakeLanguageAddon({
+      name: 'Spanish (Argentina)',
+      target_locale: 'es-AR',
+      type: ADDON_TYPE_LANG,
+    }),
+    createFakeLanguageAddon({
       name: 'Scottish Language Pack (with Irn-Bru)',
       target_locale: 'en-GB',
       type: ADDON_TYPE_LANG,
@@ -104,6 +109,28 @@ describe(__filename, () => {
   });
 
   it('renders language tools in your locale', () => {
+    const { store } = dispatchClientMetadata({ lang: 'fr' });
+    store.dispatch(loadAddonResults({ addons }));
+    const root = renderShallow({ store });
+
+    const dictionary = root.find(
+      `.LanguageTools-in-your-locale-list-item--${ADDON_TYPE_DICT}`
+    );
+    const langPack = root.find(
+      `.LanguageTools-in-your-locale-list-item--${ADDON_TYPE_LANG}`
+    );
+
+    expect(root.find(LoadingText)).toHaveLength(0);
+    expect(root.find('.LanguageTools-in-your-locale')).toHaveLength(1);
+    expect(dictionary).toHaveLength(1);
+    expect(dictionary.find(Link))
+      .toHaveProp('children', 'le French Dictionary');
+    expect(langPack).toHaveLength(1);
+    expect(langPack.find(Link))
+      .toHaveProp('children', 'French Language Pack');
+  });
+
+  it('normalizes target lang', () => {
     const { store } = dispatchClientMetadata({ lang: 'fr' });
     store.dispatch(loadAddonResults({ addons }));
     const root = renderShallow({ store });

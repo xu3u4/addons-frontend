@@ -17,6 +17,7 @@ import {
 } from 'core/constants';
 import languages from 'core/languages';
 import translate from 'core/i18n/translate';
+import { getRootLocale } from 'core/i18n/utils';
 import { fetchLanguageTools } from 'core/reducers/addons';
 import Card from 'ui/components/Card';
 import LoadingText from 'ui/components/LoadingText';
@@ -74,7 +75,9 @@ export class LanguageToolsBase extends React.Component<Props> {
     const { addons, i18n, lang } = this.props;
 
     const languageToolsInYourLocale = addons ? addons.filter((addon) => {
-      return addon.target_locale === lang;
+      // Remove region specifier from locale; see:
+      // https://github.com/mozilla/addons/issues/528
+      return getRootLocale(addon.target_locale) === lang;
     }) : null;
 
     // This means we've loaded add-ons but there aren't any available in this
@@ -170,7 +173,7 @@ export class LanguageToolsBase extends React.Component<Props> {
             {addons && addons.length ? Object.keys(languages).map((langKey) => {
               const toolsInLocale = addons ? addons
                 .filter((addon) => {
-                  return addon.target_locale === langKey;
+                  return getRootLocale(addon.target_locale) === langKey;
                 }) : null;
 
               // This means there are no language tools available in this

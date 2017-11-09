@@ -9,6 +9,31 @@ const defaultLang = config.get('defaultLang');
 
 
 describe('i18n utils', () => {
+  describe('getRootLocale()', () => {
+    it('should return null if locale is falsy', () => {
+      expect(getRootLocale(false)).toEqual(null);
+      expect(getRootLocale(null)).toEqual(null);
+    });
+
+    it('should return null if locale cannot be split', () => {
+      expect(getRootLocale(true)).toEqual(null);
+    });
+
+
+    it('should return en for en-US, en-GB, etc.', () => {
+      expect(getRootLocale('en-US')).toEqual('en');
+      expect(getRootLocale('en-GB')).toEqual('en');
+    });
+
+    it('should lowercase the lang', () => {
+      expect(getRootLocale('EN-US')).toEqual('en');
+    });
+
+    it('should return just the lang if no hyphen found', () => {
+      expect(getRootLocale('fr')).toEqual('fr');
+    });
+  });
+
   describe('normalizeLang()', () => {
     it('should normalize standard languages', () => {
       expect(utils.normalizeLang('en-us')).toEqual('en-US');
