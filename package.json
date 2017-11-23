@@ -185,7 +185,7 @@
     "react": "15.6.2",
     "react-addons-css-transition-group": "15.6.2",
     "react-autosuggest": "9.3.2",
-    "react-cookie": "1.0.5",
+    "react-cookie": "2.1.2",
     "react-dom": "15.6.2",
     "react-helmet": "5.2.0",
     "react-nested-status": "0.1.2",
