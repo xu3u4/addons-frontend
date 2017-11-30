@@ -1,0 +1,11 @@
+@import "~amo/css/inc/vars";
+@import "~core/css/inc/mixins";
+@import "~ui/css/vars";
+
+.UserProfile {
+  margin: $padding-page;
+}
+
+.UserProfile-avatar {
+  float: right;
+}

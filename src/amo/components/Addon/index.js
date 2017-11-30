@@ -466,7 +466,7 @@ export class AddonBase extends React.Component {
     if (addon) {
       const authorList = addon.authors.map((author) => {
         if (author.url) {
-          return `<a href="${author.url}">${author.name}</a>`;
+          return `<a href="/user/${author.username}/">${author.name}</a>`;
         }
 
         return author.name;

@@ -24,6 +24,8 @@ import ReviewGuide from './components/StaticPages/ReviewGuide';
 import SearchPage from './components/SearchPage';
 import ServerError from './components/ErrorPage/ServerError';
 import Collection from './components/Collection';
+import UserProfile from './components/UserProfile';
+import UserProfileEdit from './components/UserProfileEdit';
 
 // If you add a new route here, check that the nginx rules maintained by ops
 // are in sync. See:
@@ -41,6 +43,8 @@ export default (
       <Route path="addon/:slug/" component={Addon} />
       <Route path="addon/:addonSlug/reviews/" component={AddonReviewList} />
       <Route path="collections/:user/:slug/" component={Collection} />
+      <Route path="users/edit/" component={UserProfileEdit} />
+      <Route path="user/:username/" component={UserProfile} />
       <Route path=":visibleAddonType/categories/" component={CategoriesPage} />
       <Route path=":visibleAddonType/:slug/" component={Category} />
       <Route path="language-tools/" component={LanguageTools} />
