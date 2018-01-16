@@ -51,5 +51,8 @@ export const DISCO_DATA_GUID_IGNORE_LIST = [
   'disable-media-wmf-nv12@mozilla.org', // Disable Media WMF NV12 format
   'timecop@mozilla.com', // Fixing the geo timeline
   'tls13-middlebox-ghack@mozilla.org', // TLS 1.3 Compatibility Testing of Middleboxes
-  '>tp-pref-rollback@mozilla.com', // Tracking Protection preference rollback
+  'disable-js-shared-memory@mozilla.org', // Disable JavaScript Shared Memory
+  'disable-crash-autosubmit@mozilla.org', // Disable Crash Auto Submit
+  'taarexp@mozilla.com', // TAARExperiment
+  'tls13-middlebox-draft22@mozilla.org', // TLS 1.3 Compatibility Testing of Middleboxes
 ];
