@@ -4,7 +4,7 @@ import invariant from 'invariant';
 import { createInternalAddon } from 'core/reducers/addons';
 import type { AddonType, ExternalAddonType } from 'core/types/addons';
 
-export const LANDING_GET: 'LANDING_GET' = 'LANDING_GET';
+export const GET_LANDING: 'GET_LANDING' = 'GET_LANDING';
 export const LANDING_LOADED: 'LANDING_LOADED' = 'LANDING_LOADED';
 
 type ResultSet = {|
@@ -45,7 +45,7 @@ type GetLandingParams = {|
 |};
 
 export type GetLandingAction = {|
-  type: typeof LANDING_GET,
+  type: typeof GET_LANDING,
   payload: GetLandingParams,
 |};
 
@@ -58,7 +58,7 @@ export function getLanding({
   invariant(errorHandlerId, 'errorHandlerId is required');
 
   return {
-    type: LANDING_GET,
+    type: GET_LANDING,
     payload: { addonType, errorHandlerId, category: category || null },
   };
 }
@@ -99,7 +99,7 @@ export default function reducer(
   action: Action,
 ): LandingState {
   switch (action.type) {
-    case LANDING_GET: {
+    case GET_LANDING: {
       const { payload } = action;
 
       return {
