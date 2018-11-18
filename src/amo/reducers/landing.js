@@ -5,7 +5,7 @@ import { createInternalAddon } from 'core/reducers/addons';
 import type { AddonType, ExternalAddonType } from 'core/types/addons';
 
 export const GET_LANDING: 'GET_LANDING' = 'GET_LANDING';
-export const LANDING_LOADED: 'LANDING_LOADED' = 'LANDING_LOADED';
+export const LOAD_LANDING: 'LOAD_LANDING' = 'LOAD_LANDING';
 
 type ResultSet = {|
   count: number,
@@ -71,7 +71,7 @@ type LoadLandingParams = {|
 |};
 
 type LoadLandingAction = {|
-  type: typeof LANDING_LOADED,
+  type: typeof LOAD_LANDING,
   payload: LoadLandingParams,
 |};
 
@@ -87,7 +87,7 @@ export function loadLanding({
   invariant(trending, 'trending is required');
 
   return {
-    type: LANDING_LOADED,
+    type: LOAD_LANDING,
     payload: { addonType, featured, highlyRated, trending },
   };
 }
@@ -110,7 +110,7 @@ export default function reducer(
         resultsLoaded: false,
       };
     }
-    case LANDING_LOADED: {
+    case LOAD_LANDING: {
       const { payload } = action;
 
       const newState = { ...state, loading: false, resultsLoaded: true };

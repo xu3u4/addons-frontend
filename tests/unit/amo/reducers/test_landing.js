@@ -53,7 +53,7 @@ describe(__filename, () => {
     }
 
     it('sets the type', () => {
-      expect(loadLanding(defaultParams()).type).toEqual('LANDING_LOADED');
+      expect(loadLanding(defaultParams()).type).toEqual('LOAD_LANDING');
     });
 
     it('sets the payload', () => {
@@ -142,7 +142,7 @@ describe(__filename, () => {
       });
     });
 
-    describe('LANDING_LOADED', () => {
+    describe('LOAD_LANDING', () => {
       it('sets the results', () => {
         const state = landing(
           initialState,
